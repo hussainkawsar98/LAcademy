@@ -1,0 +1,22 @@
+/* Form Style */
+.form-group p {
+  margin-bottom: 10px;
+  color: #6c757d;
+}
+input.form-group.btn.btn-primary {
+  margin-left: 7px;
+}
+
+/* Table Style */
+.fa-pencil-alt {
+  color: #006796;
+}
+.fas.fa-trash {
+  color: #ef3232;
+}
+.course-details a {
+  color: #555555;
+}
+.course-details p {
+  color: #777777;
+}

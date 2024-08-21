@@ -1,0 +1,49 @@
+/* Theme style */
+@media screen and (min-width: 992px){
+    /* Navbar Style */
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+@media screen and (max-width: 991px){
+    /* Navbar Style */
+    .navbar-nav .dropdown-menu {
+        margin-left: 15px;
+    }
+    .navbar .nav-link {
+        font-weight: 500;
+    }
+    .d-flex > .nav-link {
+        margin-left: 15px;
+    }
+    /* Footer Style */
+    .subscription .row {
+        max-width: 720px;
+    }
+    .course-preview {
+        margin-top: -350px;
+    }
+    .course-single h4 {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 767px){
+    /* Footer Style */
+    .subscription .row {
+        max-width: 550px;
+        padding: 25px 10px;
+    }
+    .subscription .row .col-md-6:first-child {
+        margin-bottom: 5px;
+    }
+    .footer-body > .py-5 {
+        padding-bottom: 1.5rem!important;
+    }
+    .footer-single.mt-5 {
+        margin-top: 20px!important;
+    }
+    .course-preview {
+        margin-top: 0px;
+    }
+}
