@@ -13,10 +13,18 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('district_id')->nullable();
+            $table->unsignedBigInteger('thana_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('phone')->unique()->nullable();
+            $table->string('password')->nullable();
+            $table->string('designation')->nullable();
+            $table->text('address')->nullable();
+            $table->string('image')->nullable();
+            $table->enum('status', ['Active', 'Inactive', 'Pending', 'Cancel'])->default('Active');
+            $table->enum('type', ['Admin', 'Student', 'Mentor'])->default('Student');
             $table->rememberToken();
             $table->timestamps();
         });
