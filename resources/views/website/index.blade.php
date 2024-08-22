@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('website.layouts.app')
 
 @section('content')
 <!-- Start Banner Part-->
