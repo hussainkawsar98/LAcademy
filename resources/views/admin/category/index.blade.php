@@ -45,8 +45,15 @@
                           <input type="text" class="form-control">
                         </div>
                         <div class="form-group col-12">
-                          <p>Size: 400px x 300px;</p>
-                          <input class="w-100" name="profile" type="file"><br>
+                          <label>Status</label>
+                          <select name="" class="form-control">
+                            <option value="">Active</option>
+                            <option value="">Inactive</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-12">
+                          <input class="w-100" name="profile" type="file">
+                          <span>Size: 400px x 300px;</span><br>
                         </div>
                         <input type="submit" value="Save Category" class="form-group btn btn-primary">
                     </form>

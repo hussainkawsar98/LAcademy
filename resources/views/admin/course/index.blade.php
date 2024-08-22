@@ -11,8 +11,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Courses</li>
+        <a href="{{ url('dashboard/course/create') }}" class="btn btn-outline-primary">Create Course</a>
         </ol>
       </div>
     </div>
@@ -23,61 +22,6 @@
 <section class="content">
   <!-- Default box -->
   <div class="card">
-    <div class="card-header">
-      <h3 class="card-title">Course List</h3>
-
-      <div class="card-tools">
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-          Create Course
-        </button>
-        <div class="modal fade" id="modal-default">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Create New Course</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="" method="POST">
-                  <div class="row mb-3">
-                    <div class="form-group col-12">
-                      <label>Course</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group col-12">
-                      <label>Category Select</label>
-                      <select class="custom-select">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-12">
-                      <label>Mentor</label>
-                      <select class="custom-select">
-                        <option>option 1</option>
-                        <option>option 2</option> 
-                      </select>
-                    </div>
-                    <div class="form-group col-12">
-                      <p>Size: 400px x 300px;</p>
-                      <input class="w-100" name="profile" type="file"><br>
-                    </div>
-                    <input type="submit" value="Save Course" class="form-group btn btn-primary">
-                </form>
-              </div>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-      </div>
-    </div>
     <div class="card-body p-0">
       <table class="table table-striped projects">
           <thead>
