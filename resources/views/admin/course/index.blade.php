@@ -47,7 +47,7 @@
                 <td class="project-actions text-right">Created 01.01.2019</td>
                 <td>
                   <a href="{{url('/dashboard/1/edit')}}"><i class="fas fa-pencil-alt px-2"></i></a>
-                  <a href="#"><i class="fas fa-trash"></i></a>
+                  <a href="#"><i class="fas fa-trash text-danger"></i></a>
                 </td>
               </tr>
               <tr>

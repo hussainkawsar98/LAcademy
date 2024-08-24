@@ -7,6 +7,20 @@
 
 /* eslint-disable camelcase */
 
+// Summernote
+$(document).ready(function() {
+  $('#summernote').summernote({
+    placeholder: 'Hello Bootstrap 4',
+    tabsize: 2,
+    height: 200
+  });
+  $('#module-summernote').summernote({
+    placeholder: 'Hello Bootstrap 4',
+    tabsize: 2,
+    height: 250
+  });
+});
+
 (function ($) {
   'use strict'
 

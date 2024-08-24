@@ -30,7 +30,7 @@
             <input type="text" class="form-control">
           </div>
           <div class="form-group col-6">
-            <label>Category Select</label>
+            <label>Choose Category</label>
             <select class="custom-select">
               <option>option 1</option>
             </select>
@@ -63,9 +63,12 @@
             <input type="number" class="form-control">
           </div>
           <div class="form-group col-12">
-            <textarea id="summernote">
-                  Place <em>some</em> <u>text</u> <strong>here</strong>
-              </textarea>
+            <label>Course Description</label>
+            <textarea id="summernote"></textarea>
+          </div>
+          <div class="form-group col-12">
+            <label>Course Modules</label>
+            <textarea id="module-summernote"></textarea>
           </div>
           <div class="form-group col-4">
             <label>Course Status</label>
