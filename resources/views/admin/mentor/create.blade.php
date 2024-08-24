@@ -21,16 +21,16 @@
 <!-- Main content -->
 <section class="content">
   <!-- Default box -->
-  <div class="card">
+  <div class="card w-75">
     <div class="card-body">
     <form action="" method="POST">
         <div class="row mb-3">
           <div class="form-group col-6">
-            <label>Mentor</label>
+            <label>Mentor Name</label>
             <input type="text" class="form-control">
           </div>
           <div class="form-group col-6">
-            <label>Mentor Title</label>
+            <label>Designation</label>
             <input type="text" class="form-control">
           </div>
           <div class="form-group col-6">
@@ -41,13 +41,34 @@
             <label>Email</label>
             <input type="email" class="form-control">
           </div>
-          <div class="form-group col-12">
-            <label>Address</label>
-            <input type="text" class="form-control">
+          <div class="form-group col-6">
+            <label>Password</label>
+            <input type="password" class="form-control">
+          </div>
+          <div class="form-group col-6">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control">
+          </div>
+          <div class="form-group col-6">
+            <label>District</label>
+            <select name="" id="" class="form-control">
+              <option value="">Option</option>
+            </select>
+          </div>
+          <div class="form-group col-6">
+            <label>Thana</label>
+            <select name="" id="" class="form-control">
+              <option value="">Option</option>
+            </select>
           </div>
           <div class="form-group col-12">
-            <p>Size: 400px x 300px;</p>
-            <input class="w-100" name="profile" type="file"><br>
+            <label>Address</label>
+            <textarea type="password" class="form-control w-100"></textarea>
+          </div>
+          <div class="form-group col-12">
+            <label>Profile</label>
+            <input class="w-100" name="profile" type="file">
+            <span>Size: 400px x 300px;</span>
           </div>
           <input type="submit" value="Save Mentor" class="form-group btn btn-primary">
       </form>

@@ -70,7 +70,7 @@
             <label>Course Modules</label>
             <textarea id="module-summernote"></textarea>
           </div>
-          <div class="form-group col-4">
+          <div class="form-group col-2">
             <label>Course Status</label>
             <select class="custom-select">
               <option>Active</option>
@@ -79,6 +79,7 @@
             </select>
           </div>
           <div class="form-group col-12">
+            <label>Image</label>
             <input class="w-100" name="profile" type="file">
             <span>Size: 400px x 300px;</span><br>
           </div>

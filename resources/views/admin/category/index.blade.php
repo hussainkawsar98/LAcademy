@@ -36,6 +36,7 @@
                             </select>
                           </div>
                           <div class="form-group col-12">
+                            <label>Image</label>
                             <input class="w-100" name="profile" type="file">
                             <span>Size: 400px x 300px;</span><br>
                           </div>
