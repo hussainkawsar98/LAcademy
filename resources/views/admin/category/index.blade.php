@@ -41,7 +41,7 @@
             <td>
               <img src="{{ getImage('media/category', $category->image) }}" width="100px" alt="">
             </td>
-            <td class="text-center">45</td>
+            <td class="text-center"><a href="{{ route('category.view',$category->id) }}">45</a></td>
             <td class="project-actions text-center">{{dateFormat($category->created_at)}}</td>
             <td class="text-right">
               <a class="btn_modal" type="button" href="{{ route('category.edit',$category->id) }}"><i class="fas fa-pencil-alt px-2"></i></a>

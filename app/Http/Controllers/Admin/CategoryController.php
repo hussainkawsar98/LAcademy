@@ -36,6 +36,7 @@ class CategoryController extends Controller
         $data = $request->validate([
             'name' => 'required|unique:categories|max:255',
             'status' => 'required',
+            'image' => 'max:500|image|mimes:jpg,png,jpeg',
         ]);
 
         DB::beginTransaction();
@@ -67,7 +68,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('admin.category.view', compact($id))
     }
 
     /**
@@ -88,6 +89,7 @@ class CategoryController extends Controller
         $data = $request->validate([
             'name' => 'max:255|required|unique:categories,name,' . $id,
             'status' => 'required',
+            'image' => 'max:500|image|mimes:jpg,png,jpeg',
         ]);
 
         DB::beginTransaction();
