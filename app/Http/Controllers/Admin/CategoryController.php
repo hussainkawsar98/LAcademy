@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+use Session;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -12,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::orderBy('created_at', 'DESC')->paginate(10);
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -20,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -28,7 +33,33 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|unique:categories|max:255',
+            'status' => 'required',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $data["slug"] = Str::of($request->name)->slug('-');
+            if ($request->hasFile('image')) {
+
+                $originName = $request->file('image')->getClientOriginalName();
+                $category_image = pathinfo($originName, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $category_image = $category_image . '.' . $extension;
+
+                $request->file('image')->move(public_path('media/category'), $category_image);
+
+                $data['image'] = $category_image;
+            }
+
+            Category::create($data);
+            DB::commit();
+            return response()->json(['status' => true, 'msg' => 'Course Created Successfully!', 'url' => route('category.index')]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['status' => false, 'msg' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -44,7 +75,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -52,7 +84,35 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+        $data = $request->validate([
+            'name' => 'max:255|required|unique:categories,name,' . $id,
+            'status' => 'required',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $data["slug"] = Str::of($request->name)->slug('-');
+            if ($request->hasFile('image')) {
+
+                deleteImage('media/category', $category->image);
+                $originName = $request->file('image')->getClientOriginalName();
+                $category_image = pathinfo($originName, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $category_image = $category_image . '.' . $extension;
+
+                $request->file('image')->move(public_path('media/category'), $category_image);
+
+                $data['image'] = $category_image;
+            }
+
+            $category->update($data);
+            DB::commit();
+            return response()->json(['status' => true, 'msg' => 'Update Successfully!', 'url' => route('category.index')]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['status' => false, 'msg' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -60,6 +120,13 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+        if (!is_null($category)) {
+            deleteImage('media/category', $category->image);
+            $category->delete();
+            return response()->json(['status' => true, 'msg' => 'Delete Successfully!']);
+        } else {
+            return response()->json(['status' => false, 'msg' => 'Delete Fail!']);
+        }
     }
 }
