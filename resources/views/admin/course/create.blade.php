@@ -23,78 +23,77 @@
   <!-- Default box -->
   <div class="card">
     <div class="card-body">
-      <form action="" method="POST">
+      <form action="{{route('course.store')}}" method="POST" id="ajax_form">
+        @csrf
         <div class="row mb-3">
           <div class="form-group col-6">
             <label>Course</label>
-            <input type="text" class="form-control">
+            <input type="text" name="name" class="form-control">
           </div>
           <div class="form-group col-6">
             <label>Choose Category</label>
-            <select class="custom-select">
-              <option>option 1</option>
+            <select name="category_id" class="custom-select">
+              @foreach($categories as $category)
+              <option value="{{$category->id}}">{{$category->name}}</option>
+              @endforeach
             </select>
           </div>
           <div class="form-group col-4">
             <label>Mentor</label>
-            <select class="custom-select">
-              <option>option 1</option>
+            <select name="mentor_id" class="custom-select">
+              @foreach($users as $user)
+              <option value="{{$user->id}}">{{$user->name}}</option>
+              @endforeach
             </select>
           </div>
           <div class="form-group col-4">
             <label>Start Date</label>
-            <input type="date" class="form-control">
+            <input name="start_date" type="date" class="form-control">
           </div>
           <div class="form-group col-4">
             <label>Course Fee</label>
-            <input type="number" class="form-control">
+            <input name="fee" type="number" class="form-control">
           </div>
           <div class="form-group col-4">
             <label>Discount</label>
-            <input type="number" class="form-control">
+            <input name="discount" type="number" class="form-control">
           </div>
           
           <div class="form-group col-4">
             <label>Total Class</label>
-            <input type="number" class="form-control">
+            <input name="total_class" type="number" class="form-control">
           </div>
           <div class="form-group col-4">
             <label>Total Days</label>
-            <input type="number" class="form-control">
+            <input name="total_days" type="number" class="form-control">
           </div>
           <div class="form-group col-12">
             <label>Course Description</label>
-            <textarea id="summernote"></textarea>
+            <textarea name="description" id="summernote"></textarea>
           </div>
           <div class="form-group col-12">
             <label>Course Modules</label>
-            <textarea id="module-summernote"></textarea>
+            <textarea name="course_module" id="module-summernote"></textarea>
           </div>
           <div class="form-group col-2">
             <label>Course Status</label>
-            <select class="custom-select">
-              <option>Active</option>
-              <option>Inactive</option>
-              <option>Upcomimg</option>
+            <select name="status" class="custom-select">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Upcomimg">Upcomimg</option>
             </select>
           </div>
           <div class="form-group col-12">
             <label>Image</label>
-            <input class="w-100" name="profile" type="file">
+            <input name="image" class="w-100" name="profile" type="file">
             <span>Size: 400px x 300px;</span><br>
           </div>
           <input type="submit" value="Save Course" class="form-group btn btn-primary">
       </form>
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
   </div>
-        <!-- /.modal -->
     </div>
-    <!-- /.card-body -->
   </div>
-  <!-- /.card -->
-
 </section>
 @endsection('content')

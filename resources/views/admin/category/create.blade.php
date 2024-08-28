@@ -16,6 +16,15 @@
             <input name="name" type="text" class="form-control">
           </div>
           <div class="form-group col-12">
+            <label>Parent Category</label>
+            <select name="parent_id" class="form-control">
+              <option value="" selected desabled>Select Parent Category</option>
+              @foreach($categories as $category)
+              <option value="{{ $category->id }}">{{ $category->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group col-12">
             <label>Status</label>
             <select name="status" class="form-control">
               <option value="Active">Active</option>

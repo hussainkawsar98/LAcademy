@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'DESC')->paginate(10);
+        $categories = Category::whereNull('parent_id')->orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.category.index', compact('categories'));
     }
 
@@ -25,7 +25,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories = Category::whereNull('parent_id')
+        ->get();
+        return view('admin.category.create', compact('categories'));
     }
 
     /**
@@ -37,6 +39,7 @@ class CategoryController extends Controller
             'name' => 'required|unique:categories|max:255',
             'status' => 'required',
             'image' => 'max:500|image|mimes:jpg,png,jpeg',
+            'parent_id'=>'',
         ]);
 
         DB::beginTransaction();
@@ -68,7 +71,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.category.view', compact($id))
+        
     }
 
     /**
@@ -76,8 +79,10 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
+        $categories = Category::whereNull('parent_id')
+        ->get();
         $category = Category::find($id);
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category', 'categories'));
     }
 
     /**
@@ -90,6 +95,7 @@ class CategoryController extends Controller
             'name' => 'max:255|required|unique:categories,name,' . $id,
             'status' => 'required',
             'image' => 'max:500|image|mimes:jpg,png,jpeg',
+            'parent_id'=>'',
         ]);
 
         DB::beginTransaction();
@@ -124,6 +130,10 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if (!is_null($category)) {
+            foreach($category->childs as $child){
+                deleteImage('media/category', $child->image);
+            $child->delete();
+            }
             deleteImage('media/category', $category->image);
             $category->delete();
             return response()->json(['status' => true, 'msg' => 'Delete Successfully!']);
