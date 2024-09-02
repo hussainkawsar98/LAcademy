@@ -69,9 +69,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        
+        // $categories = Category::(!whereNull('parent_id'))
+        // ->get();
+        return view('admin.category.show', compact('category')); 
     }
 
     /**
@@ -126,7 +128,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $id)
     {
         $category = Category::find($id);
         if (!is_null($category)) {

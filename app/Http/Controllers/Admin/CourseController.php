@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use League\CommonMark\Extension\Mention\Mention;
 
 class CourseController extends Controller
@@ -41,7 +42,7 @@ class CourseController extends Controller
             'category_id' => '',
             'mentor_id' => '',
             'start_date' => '',
-            'fee' => '',
+            'fee' => 'required',
             'discount' => '',
             'total_class' => '',
             'total_days' => '',
@@ -57,14 +58,24 @@ class CourseController extends Controller
                 $originName = $request->file('image')->getClientOriginalName();
                 $course_image = pathinfo($originName, PATHINFO_FILENAME);
                 $extension = $request->file('image')->getClientOriginalExtension();
-                $category_image = $course_image . '.' . $extension;
+                $course_image = $course_image . '.' . $extension;
 
                 $request->file('image')->move(public_path('media/course'), $course_image);
 
                 $data['image'] = $course_image;
             }
 
-            Course::create($data);
+            $course = Course::create($data);
+            $file_name = $course->name . '-' . $course->id . '.txt'; // Adding .txt extension to the file name
+            $path = public_path('media/course/' . $file_name); // Appending file name to the path
+            File::put($path, $request->description); // Creating the file with the content
+            $file_name1 = $course->name . '-' . $course->id . '_module.txt'; // Adding .txt extension to the file name
+            $path = public_path('media/course/' . $file_name1); // Appending file name to the path
+            File::put($path, $request->course_moudle); // Creating the file with the content
+            $code = 'LA00' . $course->id;
+            $course->course_code = $code;
+            $course->update();
+
             DB::commit();
             return response()->json(['status' => true, 'msg' => 'Course Created Successfully!', 'url' => route('course.index')]);
         } catch (\Exception $e) {

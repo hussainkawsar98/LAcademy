@@ -62,6 +62,10 @@ class WebsiteController extends Controller
     {
         return view('website.student');
     }
+    public function mentor()
+    {
+        return view('website.mentor');
+    }
     public function category()
     {
         return view('website.category');

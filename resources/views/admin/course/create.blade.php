@@ -23,7 +23,7 @@
   <!-- Default box -->
   <div class="card">
     <div class="card-body">
-      <form action="{{route('course.store')}}" method="POST" id="ajax_form">
+      <form action="{{route('course.store')}}" method="POST" id="ajax_form" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
           <div class="form-group col-6">

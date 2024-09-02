@@ -262,17 +262,13 @@
             <li class="nav-item">
               <a href="{{url('/dashboard/student')}}" class="nav-link">
                 <i class="nav-icon fas fa-circle"></i>
-                <p>
-                  Students
-                </p>
+                <p>Students</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{url('/dashboard/setting')}}" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
-                <p>
-                  Setting
-                  <i class="fas fa-angle-left right"></i>
+                <p>Setting<i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
@@ -280,6 +276,18 @@
                   <a href="{{url('/dashboard/profile')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Profile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('/dashboard/district')}}" class="nav-link">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>District</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('/dashboard/thana')}}" class="nav-link">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>Thana</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -1027,6 +1035,6 @@
   <script src="{{ asset('admin/js/demo.js') }}"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="{{ asset('admin/js/pages/dashboard.js') }}"></script>
+  @stack('js')
 </body>
-
 </html>

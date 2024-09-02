@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('mentor_id');
-            $table->string('name')->unique()->nullable();
-            $table->string('course_code')->unique();
+            $table->string('name')->unique();
+            $table->string('slug');
+            $table->string('course_code')->unique()->nullable();
             $table->decimal('fee', 10,2);
             $table->decimal('discount', 10,2)->default(0);
             $table->enum('status', ['Active', 'Inactive', 'Upcoming'])->default('Active');

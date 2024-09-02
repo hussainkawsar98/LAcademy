@@ -36,7 +36,7 @@
             @if ($categories->count())
             @foreach ($categories as $category)
             <tr>
-              <td><a href="#">{{ $category->name }}</a></td>
+              <td><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></td>
               <td>
                 <ul>
                   @foreach ($category->childs as $child)
