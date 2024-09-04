@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\District;
 use App\Models\Thana;
 use App\Models\User;
+use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Support\Facades\Hash;
+
 class MentorController extends Controller
 {
     /**
@@ -18,8 +20,7 @@ class MentorController extends Controller
     public function index()
     {
         $mentors = User::where('type', 'Mentor')->get();
-        dd($mentors);
-        return view('admin.mentor.index');
+        return view('admin.mentor.index', compact('mentors'));
     }
 
     /**
@@ -27,7 +28,7 @@ class MentorController extends Controller
      */
     public function create()
     {
-        $districts= District::all();
+        $districts = District::all();
         return view('admin.mentor.create', compact('districts'));
     }
 
@@ -50,8 +51,8 @@ class MentorController extends Controller
 
         DB::beginTransaction();
         try {
-            $data['password']=Hash::make($request->password);
-            $data['type']='Mentor';
+            $data['password'] = Hash::make($request->password);
+            $data['type'] = 'Mentor';
             if ($request->hasFile('image')) {
 
                 $originName = $request->file('image')->getClientOriginalName();
@@ -78,7 +79,11 @@ class MentorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $districts = District::all();
+        $mentor = User::find($id);
+        $thanas = Thana::where('district_id', $mentor->district_id)
+            ->get();
+        return view('admin.mentor.show', compact('districts', 'mentor', 'thanas'));
     }
 
     /**
@@ -94,7 +99,40 @@ class MentorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $mentor = User::find($id);
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'designation' => '',
+            'phone' => 'required|unique:users,name,' . $id,
+            'email' => 'required|unique:users,name,' . $id,
+            'district_id' => 'required',
+            'thana_id' => 'required',
+            'address' => 'required',
+            'image' => 'max:500|image|mimes:jpg,png,jpeg',
+            'status' => '',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            if ($request->hasFile('image')) {
+
+                $originName = $request->file('image')->getClientOriginalName();
+                $mentor_image = pathinfo($originName, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $mentor_image = $mentor_image . '.' . $extension;
+
+                $request->file('image')->move(public_path('media/users'), $mentor_image);
+
+                $data['image'] = $mentor_image;
+            }
+
+            $mentor->update($data);
+            DB::commit();
+            return response()->json(['status' => true, 'msg' => 'Mentor Created Successfully!', 'url' => route('mentor.index')]);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['status' => false, 'msg' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -102,6 +140,23 @@ class MentorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mentor = User::find($id);
+        $admin = User::where('type', 'Admin')->first();
+        $admin_id = null;
+        if ($admin) {
+            $admin_id = $admin->id;
+        }
+        if (!is_null($mentor)) {
+            foreach ($mentor->course as $course) {
+                if ($admin_id) {
+                    $course->mentor_id = $admin_id;
+                    $course->update();
+                }
+            }
+            $mentor->delete();
+            return response()->json(['status' => true, 'msg' => 'Delete Successfully!']);
+        } else {
+            return response()->json(['status' => false, 'msg' => 'Delete Fail!']);
+        }
     }
 }

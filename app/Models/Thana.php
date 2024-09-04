@@ -13,4 +13,8 @@ class Thana extends Model
     public function district(){
         return $this->belongsTo(District::class, 'district_id');
     }
+
+    public function mentor(){
+        return $this->hasMany(User::class, 'thana_id');
+    }
 }

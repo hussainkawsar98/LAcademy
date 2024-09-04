@@ -60,3 +60,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # laravel10
 # LAcademy
 # LAcademy
+
+
+Enviroment
+PHP version: 8.2.12
+Xampp Version: 3.3.0

@@ -25,26 +25,29 @@
           <table class="table table-striped projects">
               <thead>
                   <tr>
-                    <th>ID</th>
+                    <th>S.L.</th>
                     <th>Name</th>
-                    <th>Mobile</th>
+                    <th>Phone</th>
                     <th class="text-center">Course Items</th>
                     <th class="text-center">Created Date</th>
                     <th class="text-right">Action</th>
                   </tr>
               </thead>
               <tbody>
+                @foreach($students as $student)
                   <tr>
-                    <td>LA2024</td>
-                    <td><a href="view.html">Muktar Hussain</a></td>
+                    <td>{{$student->id}}</td>
+                    <td><a href="">{{$student->name}}</a></td>
+                    <td>{{$student->phone}}</td>
                     <td>018058974</td>
-                    <td class="text-center">01</td>
-                    <td class="project-actions text-center">Created 01.01.2019</td>
+                    <td class="text-center">00</td>
+                    <td class="project-actions text-center">{{ dateFormat($student->created_at) }}</td>
                     <td class="text-right">
                       <a href="edit.html"><i class="fas fa-pencil-alt px-2"></i></a>
                       <a href="#"><i class="fas fa-trash text-danger"></i></a>
                     </td>
                   </tr>
+                  @endforeach
               </tbody>
           </table>
           <ul class="pagination float-right mt-3">

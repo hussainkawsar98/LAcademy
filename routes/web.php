@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Website\WebsiteController;
+use App\Http\Controllers\Website\{WebsiteController, StudentRegController};
 use App\Http\Controllers\Admin\{AdminController, CategoryController, CourseController,MentorController, SaleController, StudentController, SettingController, ProfileController, DistrictController, ThanaController};
 
 /*
@@ -24,8 +24,10 @@ Route::get('/checkout', [WebsiteController::class, 'checkout'])->name('checkout'
 Route::get('/login', [WebsiteController::class, 'login'])->name('login');
 Route::get('/preview', [WebsiteController::class, 'preview'])->name('preview');
 Route::get('/student', [WebsiteController::class, 'student'])->name('student');
-Route::get('/mentor', [WebsiteController::class, 'mentor'])->name('mentor');Route::get('/registration', [WebsiteController::class, 'registration']);
+Route::get('/mentor', [WebsiteController::class, 'mentor'])->name('mentor');
 Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
+Route::resource('/registration', StudentRegController::class);
+Route::get('/registration', [StudentRegController::class, 'registration']);
 
 
 // Admin Route List

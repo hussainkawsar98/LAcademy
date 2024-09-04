@@ -27,6 +27,26 @@ function deleteImage($folder = null, $file = null)
 }
 
 // Date format
-function dateFormat($date){
-  return date('d M, y', strtotime($date));
+function dateFormat($date)
+{
+    return date('d M, Y', strtotime($date));
+}
+function setStatus($status)
+{
+    $class_name = null;
+    switch ($status) {
+        case 'Active':
+            $class_name = 'badge-success';
+            break;
+        case 'Inactive':
+            $class_name = 'badge-danger';
+            break;
+        case 'Upcoming':
+            $class_name = 'badge-info';
+            break;
+        default:
+            $class_name = null;
+            break;
+    }
+    return $class_name;
 }

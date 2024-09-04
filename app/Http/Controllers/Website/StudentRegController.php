@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\District;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class StudentRegController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $students = User::all();
-        return view('admin.student.index', compact('students'));
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function registration()
     {
-        return view('admin.student.create');
+        $districts = District::all();
+
+        return view('website.registration', compact('districts'));
     }
 
     /**

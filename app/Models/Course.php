@@ -14,4 +14,8 @@ class Course extends Model
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function mentor(){
+        return $this->belongsTo(User::class, 'mentor_id');
+    }
 }
