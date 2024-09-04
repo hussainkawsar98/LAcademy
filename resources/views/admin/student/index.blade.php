@@ -41,7 +41,7 @@
                     <td>{{$student->phone}}</td>
                     <td>018058974</td>
                     <td class="text-center">00</td>
-                    <td class="project-actions text-center">{{ dateFormat($student->created_at) }}</td>
+                    <td class="project-actions text-center">{{ dateFormat($student->created_at) }}Hello</td>
                     <td class="text-right">
                       <a href="edit.html"><i class="fas fa-pencil-alt px-2"></i></a>
                       <a href="#"><i class="fas fa-trash text-danger"></i></a>
