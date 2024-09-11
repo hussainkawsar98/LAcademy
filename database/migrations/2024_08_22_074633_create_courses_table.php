@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('course_code')->unique()->nullable();
             $table->decimal('fee', 10,2);
-            $table->decimal('discount', 10,2)->default(0);
+            $table->decimal('discount', 10,2)->default(0)->nullable();
             $table->enum('status', ['Active', 'Inactive', 'Upcoming'])->default('Active');
             $table->date('start_date')->nullable();
             $table->integer('total_class')->default(0);

@@ -42,10 +42,10 @@ class CourseController extends Controller
             'name' => 'required|unique:courses|max:255',
             'category_id' => '',
             'mentor_id' => '',
-            'start_date' => '',
+            'start_date' => 'required',
             'fee' => 'required',
-            'discount' => '',
-            'total_class' => '',
+            'discount' => 'required',
+            'total_class' => 'required',
             'total_days' => '',
             'status' => 'required',
             'image' => 'max:500|image|mimes:jpg,png,jpeg',
@@ -71,8 +71,9 @@ class CourseController extends Controller
             $path = public_path('media/course/' . $file_name); // Appending file name to the path
             File::put($path, $request->description); // Creating the file with the content
             $file_name1 = $course->name . '-' . $course->id . '_module.txt'; // Adding .txt extension to the file name
-            $path = public_path('media/course/' . $file_name1); // Appending file name to the path
-            File::put($path, $request->course_moudle); // Creating the file with the content
+            $path_one = public_path('media/course/' . $file_name1); // Appending file name to the path
+            File::put($path_one, $request->course_module); // Creating the file with the content
+
             $code = 'LA00' . $course->id;
             $course->course_code = $code;
             $course->update();
@@ -128,6 +129,7 @@ class CourseController extends Controller
             $data["slug"] = Str::of($request->name)->slug('-');
             if ($request->hasFile('image')) {
 
+                deleteImage('media/course', $course->image);
                 $originName = $request->file('image')->getClientOriginalName();
                 $course_image = pathinfo($originName, PATHINFO_FILENAME);
                 $extension = $request->file('image')->getClientOriginalExtension();
@@ -143,8 +145,8 @@ class CourseController extends Controller
             $path = public_path('media/course/' . $file_name); // Appending file name to the path
             File::put($path, $request->description); // Creating the file with the content
             $file_name1 = $course->name . '-' . $course->id . '_module.txt'; // Adding .txt extension to the file name
-            $path = public_path('media/course/' . $file_name1); // Appending file name to the path
-            File::put($path, $request->course_moudle); // Creating the file with the content
+            $path_one = public_path('media/course/' . $file_name1); // Appending file name to the path
+            File::put($path_one, $request->course_module); // Creating the file with the content
 
             $course->update($data);
             DB::commit();

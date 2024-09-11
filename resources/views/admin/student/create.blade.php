@@ -10,7 +10,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{ url('dashboard/mentor') }}">Student</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('dashboard/student') }}">Student</a></li>
           <li class="breadcrumb-item active">Admission</li>
         </ol>
       </div>
@@ -23,21 +23,24 @@
   <!-- Default box -->
   <div class="card w-75">
     <div class="card-body">
-    <form action="" method="POST">
+    <form action="" method="POST" action="{{route('student.store')}}">
+      @csrf
         <div class="row">
           <div class="form-group col-6">
             <label>Student Name</label>
-            <input type="text" class="form-control">
+            <input type="text" name="name" class="form-control">
           </div>
           <div class="form-group col-6">
             <label>Select Course</label>
             <select name="" id="" class="form-control">
-              <option value="">Web Design</option>
+              @foreach($courses as $course)
+              <option value="{{$course->id}}">{{$course->course_code}} - {{$course->name}}</option>
+              @endforeach
             </select>
           </div>
           <div class="form-group col-6">
             <label>Phone</label>
-            <input type="number" class="form-control">
+            <input type="text" name="phone" class="form-control">
           </div>
           <div class="form-group col-6">
             <label>Email</label>

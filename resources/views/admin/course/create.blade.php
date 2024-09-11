@@ -28,7 +28,7 @@
         <div class="row mb-3">
           <div class="form-group col-6">
             <label>Course</label>
-            <input type="text" name="name" class="form-control">
+            <input type="text" {{ old('') }} name="name" class="form-control">
           </div>
           <div class="form-group col-6">
             <label>Choose Category</label>
@@ -80,7 +80,7 @@
             <select name="status" class="custom-select">
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
-              <option value="Upcomimg">Upcomimg</option>
+              <option value="Upcoming">Upcoming</option>
             </select>
           </div>
           <div class="form-group col-12">

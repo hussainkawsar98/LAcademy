@@ -70,11 +70,35 @@
           </div>
           <div class="form-group col-12">
             <label>Course Description</label>
-            <textarea name="description" id="summernote"></textarea>
+            <textarea name="description" id="summernote">
+              @php
+                $file_name = $course->name . '-' . $course->id . '.txt';
+                $files = public_path("media/course/$file_name");
+                if (file_exists($files)) {
+                    ($file = fopen($files, 'r')) or exit('Unable to open file!');
+                    while (!feof($file)) {
+                        echo fgets($file);
+                    }
+                    fclose($file);
+                }
+              @endphp
+            </textarea>
           </div>
           <div class="form-group col-12">
             <label>Course Modules</label>
-            <textarea name="course_module" id="module-summernote"></textarea>
+            <textarea name="course_module" id="module-summernote">
+              @php
+                $file_name = $course->name . '-' . $course->id . '_module.txt';
+                $files = public_path("media/course/$file_name");
+                if (file_exists($files)) {
+                    ($file = fopen($files, 'r')) or exit('Unable to open file!');
+                    while (!feof($file)) {
+                        echo fgets($file);
+                    }
+                    fclose($file);
+                }
+              @endphp
+            </textarea>
           </div>
           <div class="form-group col-2">
             <label>Course Status</label>
@@ -83,6 +107,10 @@
               <option value="Inactive" {{$course->status ==  'Inactive'? 'selected': ''}}>Inactive</option>
               <option value="Upcoming" {{$course->status ==  'Upcoming'? 'selected': ''}}>Upcoming</option>
             </select>
+          </div>
+          <div class="form-group col-12">
+            <label for="">Course Image</label>
+            <img src="{{ getImage('media/course', $course->image) }}" class="img-fluid d-block" alt="">
           </div>
           <div class="form-group col-12">
             <label>Image</label>

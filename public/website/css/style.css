@@ -137,7 +137,10 @@ input.form-control.file {
     background-color: transparent;
     border-radius: 2px;
 }
-
+input[type=password].form-control {
+    font-size: 20px;
+    line-height: 15px;
+}
 /* Page Breadcrumb */
 .breadcrumb {
     background-color: #006796;

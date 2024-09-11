@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\{WebsiteController, StudentRegController};
-use App\Http\Controllers\Admin\{AdminController, CategoryController, CourseController,MentorController, SaleController, StudentController, SettingController, ProfileController, DistrictController, ThanaController};
+use App\Http\Controllers\Admin\{AdminController, BannerController, CategoryController, CourseController,MentorController, SaleController, StudentController, SettingController, ProfileController, DistrictController, ThanaController};
+use App\Models\Banner;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::resource('/dashboard/setting', SettingController::class);
 Route::resource('/dashboard/profile', ProfileController::class);
 Route::resource('/dashboard/district', DistrictController::class);
 Route::resource('/dashboard/thana', ThanaController::class);
+Route::resource('/dashboard/banner', BannerController::class);
 Route::post('/dashboard/thana/get-thana', [ThanaController::class,'getThana'])->name('thana.getthana');
 
 // Route::get('/', [WebsiteController::class, 'index'])->name('home');

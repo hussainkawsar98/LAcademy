@@ -3,7 +3,7 @@
 function getImage($folder, $value = null)
 {
 
-    $url = asset('no_found.jpg');
+    $url = asset('admin/images/boxed-bg.jpg');
     $path = public_path($folder . '/' . $value);
     if (!empty($folder) && (!empty($value))) {
         if (file_exists($path)) {

@@ -37,14 +37,14 @@
                 @foreach($students as $student)
                   <tr>
                     <td>{{$student->id}}</td>
-                    <td><a href="">{{$student->name}}</a></td>
+                    <td><a href="{{route('student.show', $student->id)}}">{{$student->name}}</a></td>
                     <td>{{$student->phone}}</td>
                     <td>018058974</td>
                     <td class="text-center">00</td>
-                    <td class="project-actions text-center">{{ dateFormat($student->created_at) }}Hello</td>
+                    <td class="project-actions text-center">{{ dateFormat($student->created_at) }}</td>
                     <td class="text-right">
-                      <a href="edit.html"><i class="fas fa-pencil-alt px-2"></i></a>
-                      <a href="#"><i class="fas fa-trash text-danger"></i></a>
+                      <a href="{{route('student.edit', $student->id)}}"><i class="fas fa-pencil-alt px-2"></i></a>
+                      <a href="{{route('student.destroy', $student->id)}}" class="delete" type="button"><i class="fas fa-trash text-danger"></i></a>
                     </td>
                   </tr>
                   @endforeach

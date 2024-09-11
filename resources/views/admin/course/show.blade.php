@@ -15,7 +15,7 @@
                 <h3 class="mt-2"><a href="#">{{$course->name}}</a></h3>
                 <p class="mb-3">
                   @php
-                      $file_name = $lesson_data->lesson_title . '-' . $lesson_data->id . '.txt';
+                      $file_name = $course->name . '-' . $course->id . '.txt';
                       $files = public_path("media/course/$file_name");
                       if (file_exists($files)) {
                           ($file = fopen($files, 'r')) or exit('Unable to open file!');

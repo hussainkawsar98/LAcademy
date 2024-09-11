@@ -3,21 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
-use App\Models\District;
-use App\Models\Thana;
-use App\Models\User;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class BannerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $students = User::all();
-        return view('admin.student.index', compact('students'));
+        $banners = Banner::all();
+        return view('admin.banner.index', compact('banners'));
     }
 
     /**
@@ -25,10 +22,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $districts = District::all();
-        $thanas = Thana::all();
-        $courses = Course::all();
-        return view('admin.student.create', compact('districts', 'thanas', 'courses'));
+        //
     }
 
     /**
@@ -52,8 +46,7 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        $student = User::find($id);
-        return view('admin.student.edit', compact('student'));
+        //
     }
 
     /**
