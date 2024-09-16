@@ -24,9 +24,10 @@
         <table class="table table-striped projects">
           <thead>
             <tr>
-              <th>Category</th>
-              <th>Parent Category</th>
-              <th>Course Image</th>
+              <th>Banner</th>
+              <th>Title</th>
+              <th>Body Text</th>
+              <th>Image</th>
               <th class="text-center">Total Course</th>
               <th class="text-center">Created Date</th>
               <th class="text-right">Action</th>
