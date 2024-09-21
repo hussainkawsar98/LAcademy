@@ -78,6 +78,18 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{url('/dashboard/banner')}}" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>Banners</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{url('/dashboard/testimonial')}}" class="nav-link">
+            <i class="nav-icon fas fa-circle"></i>
+            <p>Testimonials </p>
+          </a>
+        </li>
         </li>
         <li class="nav-item">
           <a href="{{url('/dashboard/student')}}" class="nav-link">

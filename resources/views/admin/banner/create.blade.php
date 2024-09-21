@@ -1,42 +1,47 @@
-<div class="modal-dialog">
+<div class="modal-dialog w-75">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="modal-title">Create Category</h4>
+      <h4 class="modal-title">Create Banner</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
       <!-- Errors List Show -->
-      <form action="{{route('category.store')}}" method="POST" id="ajax_form">
+      <form action="{{route('banner.store')}}" method="POST" id="ajax_form">
         @csrf
         <div class="row mb-3">
           <div class="form-group col-12">
-            <label>Category Name</label>
-            <input name="name" type="text" class="form-control">
+            <label>Banner Title</label>
+            <textarea name="title" class="form-control" id="" cols="30" rows="2"></textarea>
           </div>
           <div class="form-group col-12">
-            <label>Parent Category</label>
-            <select name="parent_id" class="form-control">
-              <option value="" selected desabled>Select Parent Category</option>
-              @foreach($categories as $category)
-              <option value="{{ $category->id }}">{{ $category->name }}</option>
-              @endforeach
-            </select>
+            <label>Body Text</label>
+            <textarea name="body_text" class="form-control" id="" cols="30" rows="2"></textarea>
           </div>
-          <div class="form-group col-12">
-            <label>Status</label>
-            <select name="status" class="form-control">
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
-            </select>
-          </div>
+          <div class="form-group col-4">
+            <label>Button Text</label>
+            <input name="pry_btn_text" type="text" class="form-control">
+          </div> 
+          <div class="form-group col-8">
+            <label>Button Link</label>
+            <input name="pry_btn_link" type="text" class="form-control">
+          </div> 
+          <div class="form-group col-4">
+            <label>Button Text</label>
+            <input name="snd_btn_text" type="text" class="form-control">
+          </div> 
+          <div class="form-group col-8">
+            <label>Button Link</label>
+            <input name="snd_btn_link" type="text" class="form-control">
+          </div> 
           <div class="form-group col-12">
             <label>Image</label>
             <input name="image" class="w-100" name="profile" type="file">
-            <span>Size: 400px x 300px;</span><br>
+            <span>Size: 1200px x 768px;</span><br>
           </div>
-          <input type="submit" value="Save Category" class="form-group btn btn-primary">
+          <input type="submit" value="Save Banner" class="form-group btn btn-primary">
+        </div>
       </form>
     </div>
   </div>

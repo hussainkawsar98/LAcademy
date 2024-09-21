@@ -39,13 +39,12 @@
     <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
-    <!-- Top Bar  -->
-    @include('admin.layouts.topbar');
+    <!-- Footer Section -->
+    @include('admin.layouts.body');
     <!-- Footer Section -->
     @include('admin.layouts.footer');
     <!-- Delete -->
     @include('admin.layouts.delete');
-
     <script type="text/javascript">
       $.ajaxSetup({
         headers: {

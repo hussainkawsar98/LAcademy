@@ -1,8 +1,8 @@
 @extends('website.layouts.app')
 
 @section('content')
-<!-- Start Banner Part-->
-<section id="banner">
+  <!-- Start Banner Part-->
+  <section id="banner">
   <div id="carouselExampleCaptions" class="carousel slide carousel-fade">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -42,7 +42,7 @@
       </button>
     </div>
   </section>
-    <!-- End Banner Part-->
+  <!-- End Banner Part-->
 
     <!-- Start About Part-->
     <section id="about" class="vr-gap">

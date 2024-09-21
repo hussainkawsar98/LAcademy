@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <a type="button" class="btn btn-outline-primary btn_modal" href="{{ route('banner.create') }}">Create Banner</a>
+            <a type="button" class="btn btn-outline-primary btn_modal" href="{{ route('testimonial.create') }}">Create Testimonial</a>
           </ol>
         </div>
       </div>
@@ -25,22 +25,24 @@
           <thead>
             <tr>
               <th>Title</th>
-              <th>Body Text</th>
+              <th>Designation</th>
+              <th>Text</th>
               <th>Image</th>
               <th class="text-center">Created Date</th>
               <th class="text-right">Action</th>
             </tr>
           </thead>
           <tbody>
-            @if($banners->count())
-            @foreach ($banners as $banner)
+            @if($testimonials->count())
+            @foreach ($testimonials as $testimonial)
             <tr>
-              <td><a href="{{ route('banner.edit', $banner->id) }}">{{ $banner->title }}</a></td>
-              <td>{{ $banner->body_text }}</td>
-              <td><img src="{{ getImage('media/banner', $banner->image) }}" width="100px" alt="" class="rounded"></td>
-              <td class="project-actions text-center">{{ dateFormat($banner->created_at) }}</td>
+              <td><a href="{{ route('testimonial.edit', $testimonial->id) }}"><span class="btn_modal">{{ $testimonial->name }}</span></a></td>
+              <td>{{ $testimonial->designation }}</td>
+              <td>{{ $testimonial->text }}</td>
+              <td><img src="{{ getImage('media/testimonial', $testimonial->image) }}" width="100px" alt="" class="rounded"></td>
+              <td class="project-actions text-center">{{ dateFormat($testimonial->created_at) }}</td>
               <td class="text-right">
-                <a href="{{ route('banner.destroy', $banner->id) }}" type="button" class="delete"><i class="fas fa-trash text-danger"></i></a>
+                <a href="{{ route('testimonial.destroy', $testimonial->id) }}" type="button" class="delete"><i class="fas fa-trash text-danger"></i></a>
               </td>
             </tr>
             @endforeach
